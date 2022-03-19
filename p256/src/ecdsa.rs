@@ -71,6 +71,12 @@ impl ecdsa_core::hazmat::DigestPrimitive for NistP256 {
     type Digest = sha2::Sha256;
 }
 
+#[cfg(feature = "blake2")]
+#[cfg_attr(docsrs, doc(cfg(feature = "blake2")))]
+impl ecdsa_core::hazmat::DigestPrimitive for NistP256 {
+    type Digest = blake2::Blake2s256;
+}
+
 #[cfg(feature = "ecdsa")]
 impl SignPrimitive<NistP256> for Scalar {}
 
